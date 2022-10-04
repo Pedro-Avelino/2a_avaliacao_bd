@@ -1,0 +1,9 @@
+SELECT alunos.nome, alunos.cpf, alunos.nota_enem, cidades.nome, estados.nome 
+FROM alunos
+INNER JOIN cidades
+ON alunos.id_cidade = cidades.id
+INNER JOIN estados
+ON alunos.id_estado = estados.id
+WHERE id_curso=5
+ORDER BY nota_enem DESC
+OFFSET (SELECT vagas FROM cursos WHERE id=5);

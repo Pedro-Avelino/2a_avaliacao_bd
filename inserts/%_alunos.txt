@@ -1,0 +1,5 @@
+select count(alunos) as "Nº de Inscritos", alunos.sexo,
+cast((count(alunos) / tmp.total) * 1000 as numeric (10,3))
+from alunos, (select cast(count(sexo) as numeric (10,3)) total from alunos) tmp
+where id_curso=1
+group by alunos.sexo, tmp.total

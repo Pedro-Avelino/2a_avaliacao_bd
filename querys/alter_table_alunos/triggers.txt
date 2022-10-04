@@ -1,0 +1,2 @@
+create trigger alunos_log after insert or update or delete on alunos
+for each row execute procedure alunos_log();

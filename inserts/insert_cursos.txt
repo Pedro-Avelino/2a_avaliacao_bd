@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS cursos;
+CREATE TABLE IF NOT EXISTS cursos(
+  id SERIAL NOT NULL,
+  nome VARCHAR(120) DEFAULT NULL,
+  vagas INTEGER NOT NULL,
+	PRIMARY KEY(id)
+	
+);
+
+INSERT INTO cursos(nome,vagas) VALUES ('Ciência da Computação',1000), 
+					('Direito',1000), 
+					('Geografia',1000), 
+					('Ciências Sociais',1000), 
+					('Psicologia',500),
+					('Ciências Econômicas',1000),
+					('Ciências Biológicas',500),
+					('Letras Língua Portuguesa',500),
+					('Letras Língua Espanhola',500),
+					('Letras Língua Inlgesa',500);

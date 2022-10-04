@@ -1,0 +1,12 @@
+create table alunos_alterados (
+	
+	pk_alteração serial not null,
+	"nome_tabela" varchar(20) not null,
+	"operação" varchar(10) not null,
+	"valor_antigo" text,
+	"novo_valor" text,
+	"data_atualizacao" timestamp without time zone not null,
+	"usuario" varchar(20) not null,
+	constraint pk_alteração primary key (pk_alteração) )
+	with (oids=false)
+;

@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS cpf_notas;
+CREATE TABLE IF NOT EXISTS cpf_notas(
+  id SERIAL NOT NULL,
+  cpf BIGINT NOT NULL,
+  nota_enem INTEGER NOT NULL,
+    PRIMARY KEY(id)	
+);
+
+INSERT INTO cpf_notas (cpf, nota_enem)
+SELECT cpf, nota_enem FROM alunos; 

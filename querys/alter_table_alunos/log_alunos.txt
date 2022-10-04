@@ -1,0 +1,20 @@
+create or replace function alunos_log() returns trigger as 
+$$
+begin
+	if (TG_OP = 'DELETE') THEN
+		INSERT INTO alunos_alterados ("nome_tabela", "operação", "valor_antigo", "novo_valor", "data_atualizacao", "usuario")
+			values (TG_TABLE_NAME, 'DELETE', OLD, NULL, now(), USER);
+			return OLD;
+	elsif (TG_OP = 'UPDATE') THEN
+		INSERT INTO alunos_alterados ("nome_tabela", "operação", "valor_antigo", "novo_valor", "data_atualizacao", "usuario")
+			values (TG_TABLE_NAME, 'UPDATE', OLD, NEW, now(), USER);
+			return NEW;
+	elsif (TG_OP = 'INSERT') THEN
+		INSERT INTO alunos_alterados ("nome_tabela", "operação", "valor_antigo", "novo_valor", "data_atualizacao", "usuario")
+			values (TG_TABLE_NAME, 'INSERT', NULL, NEW, now(), USER);
+			return NEW;
+	END IF;
+	return NULL;
+	END;
+	$$
+	language 'plpgsql' volatile cost 100;

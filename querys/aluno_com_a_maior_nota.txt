@@ -1,0 +1,7 @@
+SELECT alunos.nome, alunos.cpf, alunos.nota_enem , cursos.nome
+FROM alunos 
+INNER JOIN cursos
+ON alunos.id_curso = cursos.id
+WHERE id_curso=1
+ORDER BY nota_enem DESC
+LIMIT 1;
